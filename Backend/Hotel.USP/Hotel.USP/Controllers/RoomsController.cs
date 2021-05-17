@@ -25,5 +25,11 @@ namespace Hotel.USP.Controllers
         {
             return await _mediator.Send(new List.Query(), cancellationToken);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Unit>> Create(Create.Command query)
+        {
+            return await _mediator.Send(query);
+        }
     }
 }

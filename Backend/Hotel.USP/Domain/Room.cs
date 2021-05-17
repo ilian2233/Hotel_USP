@@ -11,6 +11,5 @@ namespace Domain
         public int Id { get; set; }
         public bool IsBusy { get; set; }
 
-
     }
 }
