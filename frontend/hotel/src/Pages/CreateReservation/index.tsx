@@ -4,7 +4,6 @@ import Calendar from "react-calendar";
 import axios from "axios";
 
 const CreateReservation = (): JSX.Element => {
-	const [reservationRoom, setReservationRoom] = useState(0);
 	const [reservationPeriod, setReservationPeriod] =
 		useState<Date[] | undefined>(undefined);
 
@@ -30,7 +29,7 @@ const CreateReservation = (): JSX.Element => {
 			alignItems="center"
 			spacing={5}
 			onSubmit={() => {
-				alert(reservationRoom + "\n" + reservationPeriod);
+				alert(reservationPeriod);
 				postDate();
 			}}>
 			<Grid item xs={12}>
