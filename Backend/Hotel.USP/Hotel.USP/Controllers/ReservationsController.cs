@@ -1,27 +1,25 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Application.Reservations;
 using Domain;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading;
-using Application.Rooms;
+using System.Threading.Tasks;
 
 namespace Hotel.USP.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class RoomsController : ControllerBase
+    public class ReservationsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public RoomsController(IMediator mediator)
+        public ReservationsController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Room>>> List(CancellationToken cancellationToken)
+        public async Task<ActionResult<List<Reservation>>> List(CancellationToken cancellationToken)
         {
             return await _mediator.Send(new List.Query(), cancellationToken);
         }
@@ -31,7 +29,5 @@ namespace Hotel.USP.Controllers
         {
             return await _mediator.Send(query);
         }
-
-
     }
 }
