@@ -24,6 +24,13 @@ namespace Hotel.USP.Controllers
             return await _mediator.Send(new List.Query(), cancellationToken);
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<Room>> Details(int id)
+        {
+            return await _mediator.Send(new Details.Query { Id = id });
+        }
+
         [HttpPost]
         public async Task<ActionResult<Unit>> Create(Create.Command query)
         {
