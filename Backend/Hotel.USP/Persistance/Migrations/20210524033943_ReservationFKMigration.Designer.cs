@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistance;
 
 namespace Persistance.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210524033943_ReservationFKMigration")]
+    partial class ReservationFKMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,18 +60,12 @@ namespace Persistance.Migrations
             modelBuilder.Entity("Domain.Room", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsBusy")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ReservationId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ReservationId");
 
                     b.ToTable("Rooms");
                 });
@@ -86,8 +82,10 @@ namespace Persistance.Migrations
             modelBuilder.Entity("Domain.Room", b =>
                 {
                     b.HasOne("Domain.Reservation", "Reservation")
-                        .WithMany("Rooms")
-                        .HasForeignKey("ReservationId");
+                        .WithOne("Room")
+                        .HasForeignKey("Domain.Room", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Reservation");
                 });
@@ -99,7 +97,7 @@ namespace Persistance.Migrations
 
             modelBuilder.Entity("Domain.Reservation", b =>
                 {
-                    b.Navigation("Rooms");
+                    b.Navigation("Room");
                 });
 #pragma warning restore 612, 618
         }

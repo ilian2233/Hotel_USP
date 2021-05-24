@@ -10,12 +10,8 @@ namespace Domain
     public class Reservation
     {
         public int Id { get; set; }
-
-        [ForeignKey("Room")]
-        public int RoomId { get; set; }
-        public virtual Room Room { get; set; }
-        [ForeignKey("Customer")]
-        public int CustomerId { get; set; }
+        public ICollection<Room> Rooms{ get; set; }
+        public virtual int? CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
 
         public DateTime StartDate { get; set; }

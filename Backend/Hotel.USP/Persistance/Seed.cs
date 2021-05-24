@@ -16,14 +16,18 @@ namespace Persistance
                     new Room
                     {
                         IsBusy = true,
+                        ReservationId=1
                     },
                     new Room
                     {
                         IsBusy = true,
+                        ReservationId=0
+
                     },
                     new Room
                     {
                         IsBusy = true,
+                        ReservationId=2
                     }
                 };
             if (!context.Rooms.Any())
@@ -61,22 +65,22 @@ namespace Persistance
                 {
                     new Reservation
                     {
+                        CustomerId=customers.ElementAt(0).Id,
                         Customer = customers.ElementAt(0),
-                        Room = rooms.ElementAt(0),
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddDays(14)
                     },
                     new Reservation
                     {
+                        CustomerId=customers.ElementAt(1).Id,
                         Customer = customers.ElementAt(1),
-                        Room = rooms.ElementAt(1),
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddDays(3)
                     },
                     new Reservation
                     {
+                        CustomerId=customers.ElementAt(2).Id,
                         Customer = customers.ElementAt(2),
-                        Room = rooms.ElementAt(2),
                         StartDate = DateTime.Now,
                         EndDate = DateTime.Now.AddDays(4)
                     },

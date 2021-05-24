@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.USP", "Hotel.USP\Hotel.USP.csproj", "{C65D26EB-1FF5-413B-8926-7E0E49106397}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.USP", "Hotel.USP\Hotel.USP.csproj", "{C65D26EB-1FF5-413B-8926-7E0E49106397}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{82DCE878-C24F-4357-BA0A-EBE58847AA94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{82DCE878-C24F-4357-BA0A-EBE58847AA94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{D6D7AD19-6454-49CA-B992-04155EEB6CCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{D6D7AD19-6454-49CA-B992-04155EEB6CCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistance", "Persistance\Persistance.csproj", "{B1ED8573-A6AD-46D7-A2CB-89370B84F437}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistance", "Persistance\Persistance.csproj", "{B1ED8573-A6AD-46D7-A2CB-89370B84F437}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
