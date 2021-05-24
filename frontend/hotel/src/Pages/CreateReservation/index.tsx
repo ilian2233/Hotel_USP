@@ -11,12 +11,17 @@ const CreateReservation = (): JSX.Element => {
 		reservationPeriod
 			? axios({
 					method: "post",
-					url: "/user/12345",
+					url: "localhost:5000/api/Reservations",
 					data: {
 						startDate: reservationPeriod[0],
 						endDate: reservationPeriod[1],
 					},
 			  })
+					.then(() => alert("Reservation made succesfully."))
+					.catch((err) => {
+						console.log(err);
+						alert("Error occured while making your reservation.");
+					})
 			: alert("Reservation dates seems to be empty.");
 	};
 
