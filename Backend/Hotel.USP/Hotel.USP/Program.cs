@@ -20,19 +20,21 @@ namespace Hotel.USP
 
             using (var scope = host.Services.CreateScope())
             {
-                var servises = scope.ServiceProvider;
+                var services = scope.ServiceProvider;
                 try
                 {
-                    var context = servises.GetRequiredService<DataContext>();
+                    var context = services.GetRequiredService<DataContext>();
                     context.Database.Migrate();
                     await Seed.SeedData(context);
+
                 }
                 catch (Exception ex)
                 {
-                    var logger = servises.GetRequiredService<Logger<Program>>();
+                    var logger = services.GetRequiredService<Logger<Program>>();
                     logger.LogError(ex, "Error during Migration");
                 }
             }
+
             host.Run();
         }
 
