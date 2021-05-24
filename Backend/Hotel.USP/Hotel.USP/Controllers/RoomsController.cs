@@ -10,9 +10,7 @@ using Application.Rooms;
 
 namespace Hotel.USP.Controllers
 {
-    [Route("[controller]")]
-    [ApiController]
-    public class RoomsController : ControllerBase
+    public class RoomsController : BaseApiController
     {
         private readonly IMediator _mediator;
         public RoomsController(IMediator mediator)
@@ -31,7 +29,6 @@ namespace Hotel.USP.Controllers
         {
             return await _mediator.Send(query);
         }
-
 
     }
 }

@@ -8,9 +8,7 @@ using System.Threading.Tasks;
 
 namespace Hotel.USP.Controllers
 {
-    [Route("[controller]")]
-    [ApiController]
-    public class ReservationsController : ControllerBase
+    public class ReservationsController : BaseApiController
     {
         private readonly IMediator _mediator;
         public ReservationsController(IMediator mediator)
