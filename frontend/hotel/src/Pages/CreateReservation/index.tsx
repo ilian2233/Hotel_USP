@@ -32,7 +32,6 @@ const CreateReservation = (): JSX.Element => {
 			direction="column"
 			justify="center"
 			alignItems="center"
-			spacing={5}
 			onSubmit={() => {
 				alert(reservationPeriod);
 				postDate();
@@ -49,7 +48,7 @@ const CreateReservation = (): JSX.Element => {
 					}
 				/>
 			</Grid>
-			<Grid item xs={6}>
+			<Grid item xs={12}>
 				<Button type="submit">Submit</Button>
 			</Grid>
 		</Grid>

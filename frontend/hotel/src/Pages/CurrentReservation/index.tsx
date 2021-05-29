@@ -8,13 +8,15 @@ interface Reservation {
 	endOfReservation: Date;
 }
 
-const CurrentReservations = async (): Promise<JSX.Element> => {
-	const [rows] = useState<Reservation[] | undefined>(
-		await axios({
-			method: "get",
-			url: "localhost:5000/api/Reservations",
-		})
-			.then((val) =>
+const CurrentReservations = (): JSX.Element => {
+	const [rows, setRows] = useState<Reservation[] | undefined>(undefined);
+
+	axios({
+		method: "get",
+		url: "localhost:5000/api/Reservations",
+	})
+		.then((val) =>
+			setRows(
 				val.data.map((i: { id: number; endDate: unknown }) => {
 					return {
 						roomNumber: i.id,
@@ -22,12 +24,12 @@ const CurrentReservations = async (): Promise<JSX.Element> => {
 					};
 				})
 			)
-			.catch((err) => {
-				console.log(err);
-				alert("Error occured while loading reservations.");
-				return undefined;
-			})
-	);
+		)
+		.catch((err) => {
+			console.log(err);
+			alert("Error occured while loading reservations.");
+			return undefined;
+		});
 
 	return rows ? (
 		<DataGrid

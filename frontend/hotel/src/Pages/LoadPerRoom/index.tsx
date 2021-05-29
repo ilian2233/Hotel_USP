@@ -8,26 +8,28 @@ interface Room {
 	load: number;
 }
 
-const LoadPerRoom = async (): Promise<JSX.Element> => {
-	const [rows] = useState<Room[] | undefined>(
-		await axios({
-			method: "get",
-			url: "localhost:5000/api/Rooms",
-		})
-			.then((val) =>
-				val.data.map((i: { id: number; load: number }) => {
+const LoadPerRoom = (): JSX.Element => {
+	const [rows, setRows] = useState<Room[] | undefined>(undefined);
+
+	axios({
+		method: "get",
+		url: "localhost:5000/api/Reservations",
+	})
+		.then((val) =>
+			setRows(
+				val.data.map((i: { id: number; endDate: unknown }) => {
 					return {
 						roomNumber: i.id,
-						load: 0, //TODO: Must calc the num days of month - num days with reservations;
+						endOfReservation: i.endDate,
 					};
 				})
 			)
-			.catch((err) => {
-				console.log(err);
-				alert("Error occured while loading reservations.");
-				return undefined;
-			})
-	);
+		)
+		.catch((err) => {
+			console.log(err);
+			alert("Error occured while loading reservations.");
+			return undefined;
+		});
 
 	return rows ? (
 		<DataGrid

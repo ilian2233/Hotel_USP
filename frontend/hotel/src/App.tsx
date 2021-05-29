@@ -4,7 +4,7 @@ import {
 	ListItem,
 	ListItemIcon,
 	ListItemText,
-	Box,
+	Grid,
 } from "@material-ui/core";
 import CreateReservation from "./Pages/CreateReservation";
 import HomeIcon from "@material-ui/icons/Home";
@@ -42,26 +42,30 @@ const App = (): JSX.Element => {
 	];
 
 	return (
-		<Box display="flex" flexWrap>
-			<List>
-				{pages.map((item: [string, JSX.Element, () => void]) => (
-					// eslint-disable-next-line react/jsx-key
-					<ListItem button onClick={item[2]}>
-						<ListItemIcon>{item[1]}</ListItemIcon>
-						<ListItemText primary={item[0]} />
-					</ListItem>
-				))}
-			</List>
-			<Route exact path="/">
-				<CreateReservation />
-			</Route>
-			<Route exact path="/reservations">
-				<CurrentReservations />
-			</Route>
-			<Route exact path="/load">
-				<LoadPerRoom />
-			</Route>
-		</Box>
+		<Grid container>
+			<Grid item xs={2}>
+				<List>
+					{pages.map((item: [string, JSX.Element, () => void]) => (
+						// eslint-disable-next-line react/jsx-key
+						<ListItem button onClick={item[2]}>
+							<ListItemIcon>{item[1]}</ListItemIcon>
+							<ListItemText primary={item[0]} />
+						</ListItem>
+					))}
+				</List>
+			</Grid>
+			<Grid item xs={10}>
+				<Route exact path="/">
+					<CreateReservation />
+				</Route>
+				<Route exact path="/reservations">
+					<CurrentReservations />
+				</Route>
+				<Route exact path="/load">
+					<LoadPerRoom />
+				</Route>
+			</Grid>
+		</Grid>
 	);
 };
 
