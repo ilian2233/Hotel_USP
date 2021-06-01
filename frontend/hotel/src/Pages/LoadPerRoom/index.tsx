@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
+import { backendURL } from "../../consts";
 
 interface Room {
 	roomNumber: number;
@@ -13,7 +14,7 @@ const LoadPerRoom = (): JSX.Element => {
 
 	axios({
 		method: "get",
-		url: "localhost:5000/api/Reservations",
+		url: backendURL + "/api/Reservations",
 	})
 		.then((val) =>
 			setRows(

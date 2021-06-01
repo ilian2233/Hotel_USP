@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Grid } from "@material-ui/core";
 import Calendar from "react-calendar";
 import axios from "axios";
+import { backendURL } from "../../consts";
 
 const CreateReservation = (): JSX.Element => {
 	const [reservationPeriod, setReservationPeriod] =
@@ -11,8 +12,10 @@ const CreateReservation = (): JSX.Element => {
 		reservationPeriod
 			? axios({
 					method: "post",
-					url: "localhost:5000/api/Reservations",
+					url: backendURL + "/api/Reservations",
 					data: {
+						id: Math.floor(Math.random()),
+						customerId: Math.floor(Math.random()),
 						startDate: reservationPeriod[0],
 						endDate: reservationPeriod[1],
 					},
@@ -32,6 +35,7 @@ const CreateReservation = (): JSX.Element => {
 			direction="column"
 			justify="center"
 			alignItems="center"
+			spacing={5}
 			onSubmit={() => {
 				alert(reservationPeriod);
 				postDate();
