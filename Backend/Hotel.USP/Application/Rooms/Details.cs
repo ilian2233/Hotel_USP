@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace Application.Rooms
 {
-
     public class Details
     {
         public class Query : IRequest<Room>
