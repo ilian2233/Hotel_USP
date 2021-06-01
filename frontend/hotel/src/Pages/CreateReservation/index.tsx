@@ -16,8 +16,8 @@ const CreateReservation = (): JSX.Element => {
 					data: {
 						id: Math.floor(Math.random()),
 						customerId: Math.floor(Math.random()),
-						startDate: reservationPeriod[0],
-						endDate: reservationPeriod[1],
+						startDate: reservationPeriod[0].toString(),
+						endDate: reservationPeriod[1].toString(),
 					},
 			  })
 					.then(() => alert("Reservation made succesfully."))

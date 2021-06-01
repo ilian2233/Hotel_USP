@@ -18,12 +18,22 @@ const LoadPerRoom = (): JSX.Element => {
 	})
 		.then((val) =>
 			setRows(
-				val.data.map((i: { id: number; endDate: unknown }) => {
-					return {
-						roomNumber: i.id,
-						endOfReservation: i.endDate,
-					};
-				})
+				val.data.map(
+					(i: {
+						id: number;
+						rooms?: {
+							id: number;
+							isBusy: boolean;
+							reservationId: number;
+						}[];
+						endDate: unknown;
+					}) => {
+						return {
+							roomNumber: i.id,
+							endOfReservation: i.endDate,
+						};
+					}
+				)
 			)
 		)
 		.catch((err) => {

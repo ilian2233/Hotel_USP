@@ -47,7 +47,7 @@ const App = (): JSX.Element => {
 				<List>
 					{pages.map((item: [string, JSX.Element, () => void]) => (
 						// eslint-disable-next-line react/jsx-key
-						<ListItem button onClick={item[2]}>
+						<ListItem button onClick={item[2]} key={item[0]}>
 							<ListItemIcon>{item[1]}</ListItemIcon>
 							<ListItemText primary={item[0]} />
 						</ListItem>

@@ -18,12 +18,24 @@ const CurrentReservations = (): JSX.Element => {
 	})
 		.then((val) =>
 			setRows(
-				val.data.map((i: { id: number; endDate: unknown }) => {
-					return {
-						roomNumber: i.id,
-						endOfReservation: i.endDate,
-					};
-				})
+				val.data.map(
+					(i: {
+						id: number;
+						rooms?: {
+							id: number;
+							isBusy: boolean;
+							reservationId: number;
+						}[];
+						endDate: unknown;
+					}) => {
+						return {
+							id: i.id,
+							roomNumber:
+								i.rooms?.map((i) => i.id).join(",") || "",
+							endDate: i.endDate,
+						};
+					}
+				)
 			)
 		)
 		.catch((err) => {
@@ -34,9 +46,15 @@ const CurrentReservations = (): JSX.Element => {
 
 	return rows ? (
 		<DataGrid
+			autoHeight
 			columns={[
-				{ field: "id", headerName: "ID", width: 70 },
-				{ field: "endDate", headerName: "End date", width: 130 },
+				{ field: "id", headerName: "ID", width: 170 },
+				{ field: "roomNumber", headerName: "Room number", width: 200 },
+				{
+					field: "endDate",
+					headerName: "End of reservation",
+					width: 230,
+				},
 			]}
 			rows={rows}
 		/>
